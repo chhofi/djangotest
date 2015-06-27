@@ -46,8 +46,6 @@ SECURE_SSL_REDIRECT = env.bool("DJANGO_SECURE_SSL_REDIRECT", default=True)
 ALLOWED_HOSTS = ["*"]
 # END SITE CONFIGURATION
 
-INSTALLED_APPS += ("gunicorn", )
-
 # CACHING
 # ------------------------------------------------------------------------------
 CACHES = {
