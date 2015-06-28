@@ -38,6 +38,7 @@ THIRD_PARTY_APPS = (
     'oauth2_provider',
     'rest_framework',
     'crispy_forms',  # Form layouts
+    'djcelery',
 )
 
 # Apps specific for this project go here.
@@ -229,6 +230,12 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.IsAuthenticated',
     ),
 }
+
+
+# CELERY CONFIGURATION
+# ------------------------------------------------------------------------------
+import djcelery
+djcelery.setup_loader()
 
 # LOGGING CONFIGURATION
 # ------------------------------------------------------------------------------
