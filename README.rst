@@ -32,6 +32,7 @@ DJANGO_EMAIL_HOST                       EMAIL_HOST                  localhost   
 EMAIL_PORT                              EMAIL_PORT                  1025                                           raises error
 DJANGO_DEFAULT_FROM_EMAIL               DEFAULT_FROM_EMAIL          n/a                                            "djangotest <noreply@141.62.11.237>"
 EMAIL_SUBJECT_PREFIX                    EMAIL_SUBJECT_PREFIX        n/a                                            "[djangotest] "
+BROKER_URL                              BROKER_URL                  n/a                                            raise error
 ======================================= =========================== ============================================== ======================================================================
 
 * TODO: Add vendor-added settings in another table
