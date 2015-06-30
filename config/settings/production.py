@@ -78,7 +78,3 @@ TEMPLATES[0]['OPTIONS']['loaders'] = [
 # ------------------------------------------------------------------------------
 # Raises ImproperlyConfigured exception if DATABASE_URL not in os.environ
 DATABASES['default'] = env.db("DATABASE_URL")
-
-# RABBITMQ CONFIGURATION
-# ------------------------------------------------------------------------------
-BROKER_URL=env('BROKER_URL')

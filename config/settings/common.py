@@ -38,7 +38,6 @@ THIRD_PARTY_APPS = (
     'oauth2_provider',
     'rest_framework',
     'crispy_forms',  # Form layouts
-    'djcelery',
 )
 
 # Apps specific for this project go here.
@@ -234,8 +233,11 @@ REST_FRAMEWORK = {
 
 # CELERY CONFIGURATION
 # ------------------------------------------------------------------------------
-import djcelery
-djcelery.setup_loader()
+BROKER_URL=env('BROKER_URL')
+CELERY_RESULT_BACKEND = env('CELERY_RESULT_BACKEND', 'amqp')
+CELERY_ACCEPT_CONTENT = ['json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
 
 # LOGGING CONFIGURATION
 # ------------------------------------------------------------------------------

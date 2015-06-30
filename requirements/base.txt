@@ -13,8 +13,6 @@ django-floppyforms==1.4.1
 # Models
 django-model-utils==2.2
 
-django-celery==3.1.16
-
 # Images
 Pillow==2.8.2
 
