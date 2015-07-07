@@ -256,6 +256,12 @@ LOGGING = {
         }
     },
     'handlers': {
+        'graypy': {
+            'level': 'DEBUG',
+            'class': 'graypy.GELFHandler',
+            'host': 'localhost',
+            'port': 12201,
+        },
         'mail_admins': {
             'level': 'ERROR',
             'filters': ['require_debug_false'],
@@ -264,7 +270,7 @@ LOGGING = {
     },
     'loggers': {
         'django.request': {
-            'handlers': ['mail_admins'],
+            'handlers': ['mail_admins', 'graypy'],
             'level': 'ERROR',
             'propagate': True,
         },
