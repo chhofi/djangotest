@@ -257,7 +257,6 @@ LOGGING = {
     },
     'handlers': {
         'graypy': {
-            'level': 'DEBUG',
             'class': 'graypy.GELFHandler',
             'host': 'localhost',
             'port': 12201,
@@ -269,12 +268,37 @@ LOGGING = {
         }
     },
     'loggers': {
-        'django.request': {
-            'handlers': ['mail_admins', 'graypy'],
+        'django':{
+            'handlers': ['graypy'],
             'level': 'DEBUG',
+            'propagate': True,
+        },
+        'django.request': {
+            'handlers': ['mail_admins',],
+            'level': 'ERROR',
             'propagate': True,
         },
     }
 }
 
 # Your common stuff: Below this line define 3rd party library settings
+LOGGING = {
+    ...
+
+    'handlers': {
+        'graypy': {
+            'level': 'WARNING',
+            'class': 'graypy.GELFHandler',
+            'host': 'localhost',
+            'port': 12201,
+        },
+    },
+
+    'loggers': {
+        'django.request': {
+            'handlers': ['graypy'],
+            'level': 'ERROR',
+            'propagate': True,
+        },
+    },
+}
