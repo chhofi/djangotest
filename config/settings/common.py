@@ -270,7 +270,7 @@ LOGGING = {
     'loggers': {
         'django':{
             'handlers': ['graypy'],
-            'level': 'DEBUG',
+            'level': 'WARNING',
             'propagate': True,
         },
         'django.request': {
