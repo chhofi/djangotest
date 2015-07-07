@@ -10,6 +10,9 @@ from __future__ import absolute_import, unicode_literals
 
 from .common import *  # noqa
 
+DEBUG = env.bool('DJANGO_DEBUG', default=True)
+TEMPLATES[0]['OPTIONS']['debug'] = DEBUG
+
 # SECRET CONFIGURATION
 # ------------------------------------------------------------------------------
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#secret-key
