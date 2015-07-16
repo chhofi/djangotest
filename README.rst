@@ -28,10 +28,11 @@ DJANGO_SECURE_HSTS_INCLUDE_SUBDOMAINS   HSTS_INCLUDE_SUBDOMAINS     n/a         
 DJANGO_SESSION_COOKIE_HTTPONLY          SESSION_COOKIE_HTTPONLY     n/a                                            True
 DJANGO_SESSION_COOKIE_SECURE            SESSION_COOKIE_SECURE       n/a                                            False
 DJANGO_EMAIL_BACKEND                    EMAIL_BACKEND               django.core.mail.backends.console.EmailBackend django.core.mail.backends.smtp.EmailBackend
-DJANGO_EMAIL_HOST                       EMAIL_HOST                  localhost                                      localhost
-EMAIL_PORT                              EMAIL_PORT                  1025                                           1025
+DJANGO_EMAIL_HOST                       EMAIL_HOST                  localhost                                      raises error
+EMAIL_PORT                              EMAIL_PORT                  1025                                           raises error
 DJANGO_DEFAULT_FROM_EMAIL               DEFAULT_FROM_EMAIL          n/a                                            "djangotest <noreply@141.62.11.237>"
 EMAIL_SUBJECT_PREFIX                    EMAIL_SUBJECT_PREFIX        n/a                                            "[djangotest] "
+BROKER_URL                              BROKER_URL                  n/a                                            raise error
 ======================================= =========================== ============================================== ======================================================================
 
 * TODO: Add vendor-added settings in another table
@@ -80,3 +81,8 @@ To get live reloading to work you'll probably need to install an `appropriate br
 .. _appropriate browser extension: http://feedback.livereload.com/knowledgebase/articles/86242-how-do-i-install-and-use-the-browser-extensions-
 
 It's time to write the code!!!
+
+Using vagrant and ansible
+-------------------------
+
+Check out the `Ansible django stack <https://github.com/RayCrafter/ansible-django-stack>`_. It is a project for automating the whole setup process. It provisions a host or a virtual machine with everything you need (Databases, Webservers etc).

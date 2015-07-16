@@ -98,7 +98,7 @@ MANAGERS = ADMINS
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#databases
 DATABASES = {
     # Raises ImproperlyConfigured exception if DATABASE_URL not in os.environ
-    'default': env.db("DATABASE_URL", default="postgres://postgres:postgres@127.0.0.1:5432/djangotestdb"),
+    'default': env.db_url("DATABASE_URL", default="postgres://postgres:postgres@127.0.0.1:5432/djangotestdb"),
 }
 DATABASES['default']['ATOMIC_REQUESTS'] = True
 
@@ -168,7 +168,7 @@ CRISPY_TEMPLATE_PACK = 'bootstrap3'
 # STATIC FILE CONFIGURATION
 # ------------------------------------------------------------------------------
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#static-root
-STATIC_ROOT = str(ROOT_DIR('staticfiles'))
+STATIC_ROOT = env('STATIC_ROOT', default=str(ROOT_DIR('staticfiles')))
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#static-url
 STATIC_URL = '/static/'
@@ -187,7 +187,7 @@ STATICFILES_FINDERS = (
 # MEDIA CONFIGURATION
 # ------------------------------------------------------------------------------
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#media-root
-MEDIA_ROOT = str(APPS_DIR('media'))
+MEDIA_ROOT = env('MEDIA_ROOT', default=str(APPS_DIR('media')))
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#media-url
 MEDIA_URL = '/media/'
@@ -230,6 +230,15 @@ REST_FRAMEWORK = {
     ),
 }
 
+
+# CELERY CONFIGURATION
+# ------------------------------------------------------------------------------
+BROKER_URL=env('BROKER_URL')
+CELERY_RESULT_BACKEND = env('CELERY_RESULT_BACKEND', default='amqp')
+CELERY_ACCEPT_CONTENT = ['json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
+
 # LOGGING CONFIGURATION
 # ------------------------------------------------------------------------------
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#logging
@@ -247,6 +256,11 @@ LOGGING = {
         }
     },
     'handlers': {
+        'graypy': {
+            'class': 'graypy.GELFHandler',
+            'host': 'localhost',
+            'port': 12201,
+        },
         'mail_admins': {
             'level': 'ERROR',
             'filters': ['require_debug_false'],
@@ -255,8 +269,8 @@ LOGGING = {
     },
     'loggers': {
         'django.request': {
-            'handlers': ['mail_admins'],
-            'level': 'ERROR',
+            'handlers': ['mail_admins', 'graypy'],
+            'level': 'WARNING',
             'propagate': True,
         },
     }
