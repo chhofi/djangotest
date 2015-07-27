@@ -38,6 +38,7 @@ THIRD_PARTY_APPS = (
     'oauth2_provider',
     'rest_framework',
     'crispy_forms',  # Form layouts
+    'djcelery',
 )
 
 # Apps specific for this project go here.
