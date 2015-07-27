@@ -87,9 +87,9 @@ qthelp:
 	@echo
 	@echo "Build finished; now you can run "qcollectiongenerator" with the" \
 	      ".qhcp project file in $(BUILDDIR)/qthelp, like this:"
-	@echo "# qcollectiongenerator $(BUILDDIR)/qthelp/cookiecutterrepo_name.qhcp"
+	@echo "# qcollectiongenerator $(BUILDDIR)/qthelp/djangotest.qhcp"
 	@echo "To view the help file:"
-	@echo "# assistant -collectionFile $(BUILDDIR)/qthelp/cookiecutterrepo_name.qhc"
+	@echo "# assistant -collectionFile $(BUILDDIR)/qthelp/djangotest.qhc"
 
 applehelp:
 	$(SPHINXBUILD) -b applehelp $(ALLSPHINXOPTS) $(BUILDDIR)/applehelp
@@ -104,8 +104,8 @@ devhelp:
 	@echo
 	@echo "Build finished."
 	@echo "To view the help file:"
-	@echo "# mkdir -p $$HOME/.local/share/devhelp/cookiecutterrepo_name"
-	@echo "# ln -s $(BUILDDIR)/devhelp $$HOME/.local/share/devhelp/cookiecutterrepo_name"
+	@echo "# mkdir -p $$HOME/.local/share/devhelp/djangotest"
+	@echo "# ln -s $(BUILDDIR)/devhelp $$HOME/.local/share/devhelp/djangotest"
 	@echo "# devhelp"
 
 epub:
