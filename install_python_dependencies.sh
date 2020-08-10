@@ -30,7 +30,6 @@ if [ -z "$VIRTUAL_ENV" ]; then
     echo >&2 -e "\n"
     exit 1;
 else
-    pip install zipp
     pip install -r requirements/local.txt
     pip install -r requirements/test.txt
     pip install -r requirements.txt
