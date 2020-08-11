@@ -36,4 +36,3 @@ django-oauth-toolkit==0.8.1
 graypy==0.2.11
 
 # Your custom requirements go here
-pathlib2
