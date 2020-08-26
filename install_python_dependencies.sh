@@ -1,6 +1,6 @@
 #!/bin/bash
 
-pip --version >/dev/null 2>&1 || {
+pip3 --version >/dev/null 2>&1 || {
     echo >&2 -e "\npip is required but it's not installed."
     echo >&2 -e "You can install it by running the following command:\n"
     echo >&2 "wget https://bootstrap.pypa.io/get-pip.py; chmod +x get-pip.py; sudo ./get-pip.py"
@@ -12,7 +12,7 @@ pip --version >/dev/null 2>&1 || {
 virtualenv --version >/dev/null 2>&1 || {
     echo >&2 -e "\nvirtualenv is required but it's not installed."
     echo >&2 -e "You can install it by running the following command:\n"
-    echo >&2 "sudo pip install virtualenv"
+    echo >&2 "sudo pip3 install virtualenv"
     echo >&2 -e "\n"
     echo >&2 -e "\nFor more information, see virtualenv documentation: https://virtualenv.pypa.io/en/latest/"
     exit 1;
@@ -30,7 +30,7 @@ if [ -z "$VIRTUAL_ENV" ]; then
     echo >&2 -e "\n"
     exit 1;
 else
-    pip install -r requirements/local.txt
-    pip install -r requirements/test.txt
-    pip install -r requirements.txt
+    pip3 install -r requirements/local.txt
+    pip3 install -r requirements/test.txt
+    pip3 install -r requirements.txt
 fi
