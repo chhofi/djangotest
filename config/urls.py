@@ -18,7 +18,7 @@ urlpatterns = [
     # User management
     url('^login/', auth_views.LoginView, name='login'),
     url('^logout/', auth_views.LogoutView, name='logout'),
-    url(r'^users/', include(("djangotest.users.urls", name='users'), namespace="users")),
+    url(r'^users/', include(('djangotest.users.urls', name='users'), namespace='users')),
 
     # Rest
     url(r'^api/', include('djangotest.users.api.urls', name='api')),
