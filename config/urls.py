@@ -16,8 +16,8 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
 
     # User management
-    url('^login/', auth_views.login, name='login'),
-    url('^logout/', auth_views.logout, name='logout'),
+    url('^login/', auth_views.LoginView, name='login'),
+    url('^logout/', auth_views.LogoutView, name='logout'),
     url(r'^users/', include("djangotest.users.urls", namespace="users")),
 
     # Rest
