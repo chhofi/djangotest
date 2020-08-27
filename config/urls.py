@@ -18,11 +18,11 @@ urlpatterns = [
     # User management
     url('^login/', auth_views.LoginView, name='login'),
     url('^logout/', auth_views.LogoutView, name='logout'),
-    url(r'^users/', include(('djangotest.users.urls', name='users'), namespace='users')),
+    url(r'^users/', include('djangotest.users.urls', namespace='users'),
 
     # Rest
-    url(r'^api/', include('djangotest.users.api.urls', name='api')),
-    url(r'^o/', include(('oauth2_provider.urls', name='oauth2'), namespace='oauth2_provider')),
+    url(r'^api/', include('djangotest.users.api.urls')),
+    url(r'^o/', include('oauth2_provider.urls', namespace='oauth2_provider')),
 
     # Your stuff: custom urls includes go here
 
