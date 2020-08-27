@@ -5,7 +5,7 @@ from django.urls import reverse
 from django.views.generic import DetailView, ListView, RedirectView, UpdateView
 from django.contrib.auth import get_user_model
 from rest_framework import permissions, viewsets
-from oauth2_provider.ext.rest_framework import TokenHasReadWriteScope
+from oauth2_provider.contrib.rest_framework import TokenHasReadWriteScope
 
 from braces.views import LoginRequiredMixin
 
