@@ -257,7 +257,7 @@ LOGGING = {
     },
     'handlers': {
         'graypy': {
-            'class': 'graypy.GELFHandler',
+            'class': 'graypy.GELFUDPHandler',
             'host': 'localhost',
             'port': 12201,
         },
