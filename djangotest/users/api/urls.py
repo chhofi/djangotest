@@ -8,4 +8,4 @@ from ..views import UserViewSet
 router = routers.DefaultRouter()
 router.register(r'users', UserViewSet)
 
-urlpatterns = patterns('', url(r'^', include(router.urls)),)
+urlpatterns =  url(r'^', include(router.urls))
