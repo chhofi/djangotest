@@ -45,8 +45,12 @@ urlpatterns = [
     # Django Admin, use {% url 'admin:index' %}
     path(r'^admin/', admin.site.urls),
     # User management
+
+    path('^login/', auth_views.LoginView, name='login'),
+    path('^logout/', auth_views.LogoutView, name='logout'),
+
     path(r'^users/', include(("djangotest.users.urls", "djanousers"), namespace="users")),
-    path("accounts/", include("allauth.urls")),
+
     # Your stuff: custom urls includes go here
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
