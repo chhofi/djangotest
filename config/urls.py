@@ -45,7 +45,7 @@ urlpatterns = [
     # Django Admin, use {% url 'admin:index' %}
     path(r'^admin/', admin.site.urls),
     # User management
-    path("users/", include("my_awesome_project.users.urls", namespace="users")),
+    path("users/", include("djangotest.users.urls", namespace="users")),
     path("accounts/", include("allauth.urls")),
     # Your stuff: custom urls includes go here
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
@@ -78,8 +78,3 @@ if settings.DEBUG:
         import debug_toolbar
 
         urlpatterns = [path("__debug__/", include(debug_toolbar.urls))] + urlpatterns
-
-
-
-
-
