@@ -26,17 +26,36 @@ urlpatterns = [
     path(r'^o/', include('oauth2_provider.urls', namespace='oauth2_provider'))
 
     # Your stuff: custom urls includes go here
-]
-
-urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 
-#if settings.DEBUG:
-#    # This allows the error pages to be debugged during development, just visit
-#    # these url in browser to see how these error pages look like.
-#    urlpatterns += [
-#        path(r'^400/$', 'django.views.defaults.bad_request'),
-#        path(r'^403/$', 'django.views.defaults.permission_denied'),
-#        path(r'^404/$', 'django.views.defaults.page_not_found'),
-#        path(r'^500/$', 'django.views.defaults.server_error'),
-#    ]
+if settings.DEBUG:
+    # This allows the error pages to be debugged during development, just visit
+    # these url in browser to see how these error pages look like.
+    urlpatterns += [
+        path(
+            "400/",
+            default_views.bad_request,
+            kwargs={"exception": Exception("Bad Request!")},
+        ),
+	path(
+            "403/",
+            default_views.permission_denied,
+            kwargs={"exception": Exception("Permission Denied")},
+        ),
+	path(
+            "404/",
+            default_views.page_not_found,
+            kwargs={"exception": Exception("Page not Found")},
+        ),
+	path("500/", default_views.server_error),
+    ]
+    if "debug_toolbar" in settings.INSTALLED_APPS:
+        import debug_toolbar
+
+        urlpatterns = [path("__debug__/", include(debug_toolbar.urls))] + urlpatterns
+
+
+
+
+
