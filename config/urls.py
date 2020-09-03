@@ -1,32 +1,56 @@
 # -*- coding: utf-8 -*-
-from __future__ import unicode_literals
+#from __future__ import unicode_literals
 
-from django.conf import settings
-from django.conf.urls import include, url
-from django.conf.urls.static import static
-from django.urls import path
-from django.contrib import admin
-from django.views.generic import TemplateView
-from django.contrib.auth import views as auth_views
+#from django.conf import settings
+#from django.conf.urls import include, url
+#from django.conf.urls.static import static
+#from django.urls import path
+#from django.contrib import admin
+#from django.views.generic import TemplateView
+#from django.contrib.auth import views as auth_views
 
-urlpatterns = [
-    path(r'^$', TemplateView.as_view(template_name='pages/home.html'), name="home"),
-    path(r'^about/$', TemplateView.as_view(template_name='pages/about.html'), name="about"),
-
-    # Django Admin
-    path(r'^admin/', admin.site.urls),
+#urlpatterns = [
+#    path(r'^$', TemplateView.as_view(template_name='pages/home.html'), name="home"),
+#    path(r'^about/$', TemplateView.as_view(template_name='pages/about.html'), name="about"),
+#
+#    # Django Admin
+#    path(r'^admin/', admin.site.urls),
 
     # User management
-    path('^login/', auth_views.LoginView, name='login'),
-    path('^logout/', auth_views.LogoutView, name='logout'),
-    path(r'^users/', include('djangotest.users.urls', namespace='users'),
+#    path('^login/', auth_views.LoginView, name='login'),
+#    path('^logout/', auth_views.LogoutView, name='logout'),
+#    path(r'^users/', include('djangotest.users.urls', namespace='users'),
 
     # Rest
-    path(r'^api/', include('djangotest.users.api.urls')),
-    path(r'^o/', include('oauth2_provider.urls', namespace='oauth2_provider'))
+#    path(r'^api/', include('djangotest.users.api.urls')),
+#    path(r'^o/', include('oauth2_provider.urls', namespace='oauth2_provider'))
 
     # Your stuff: custom urls includes go here
+#] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+
+
+from django.conf import settings
+from django.conf.urls.static import static
+from django.contrib import admin
+from django.urls import include, path
+from django.views import defaults as default_views
+from django.views.generic import TemplateView
+
+urlpatterns = [
+    path("", TemplateView.as_view(template_name="pages/home.html"), name="home"),
+    path(
+	"about/", TemplateView.as_view(template_name="pages/about.html"), name="about"
+    ),
+    # Django Admin, use {% url 'admin:index' %}
+    path(settings.ADMIN_URL, admin.site.urls),
+    # User management
+    path("users/", include("my_awesome_project.users.urls", namespace="users")),
+    path("accounts/", include("allauth.urls")),
+    # Your stuff: custom urls includes go here
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+
 
 
 if settings.DEBUG:
